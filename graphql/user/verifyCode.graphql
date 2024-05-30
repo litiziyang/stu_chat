@@ -1,0 +1,7 @@
+type VerifyCode{
+    id:ID!
+    phone:String!
+    code:String!
+    type:Int!
+}
+

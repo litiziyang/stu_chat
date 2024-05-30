@@ -1,0 +1,26 @@
+type User{
+    id:ID!
+    name:String!
+    "邮箱"
+    email:String!
+    "是否可用"
+    is_use:Int!
+    "电话"
+    phone:String!
+    "密码"
+    password:String!
+}
+
+type LoginResponse {
+    user: User!
+    token: String!
+}
+
+extend type Mutation{
+    LoginByPassword(phone:String!,password:String!):LoginResponse! @resolver(name: "UserResolver@LoginByPassword")
+    LoginByPhone(phone:String!,code:String!):LoginResponse! @resolver(name: "UserResolver@LoginByPhone")
+}
+
+extend type Query {
+    findOne(phone:String!):User!@find
+}
